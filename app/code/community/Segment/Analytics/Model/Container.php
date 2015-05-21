@@ -2,8 +2,7 @@
 /**
  * Analytics specific full page cache container
  *
- * @package    Uaudio_Analytics
- * @author     Universal Audio <web-dev@uaudio.com>
+ * @package    Segment_Analytics
  */
 class Segment_Analytics_Model_Container  extends Enterprise_PageCache_Model_Container_Abstract {
 
