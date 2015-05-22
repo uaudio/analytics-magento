@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<placeholders>
-		<analytics_init>
+		<!--analytics_init>
 			<block>analytics/init</block>
 			<placeholder>analytics_init_container</placeholder>
 			<container>Segment_Analytics_Model_Container</container>
@@ -12,6 +12,12 @@
 			<placeholder>analytics_page_container</placeholder>
 			<container>Segment_Analytics_Model_Container</container>
 			<cache_lifetime>1</cache_lifetime>
-		</analytics_page>
+		</analytics_page-->
+		<analytics_identify>
+			<block>analytics/identify</block>
+			<placeholder>analytics_identify_container</placeholder>
+			<container>Segment_Analytics_Model_Container</container>
+			<cache_lifetime>1</cache_lifetime>
+		</analytics_identify>
 	</placeholders>
 </config>
