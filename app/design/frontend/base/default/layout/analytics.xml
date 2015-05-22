@@ -2,10 +2,8 @@
 <layout>
     <default>
         <reference name="before_body_end">
-            <block type="analytics/init" name="analytics_init" as="analytics_init">
-                <block type="analytics/page" name="analytics_page" as="page" />
-                
-            </block>
+            <block type="analytics/init" name="analytics_init" as="analytics_init" />
+            <block type="analytics/page" name="analytics_page" as="page" />
         </reference>
     </default>
 </layout>
