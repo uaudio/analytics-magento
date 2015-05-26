@@ -1,9 +1,19 @@
 <?php
 class Segment_Analytics_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    public function getWriteKey()
-    {     
+    public function getWriteKey() {
         return Mage::getStoreConfig('segment_analytics/options/write_key');
+    }
+
+    public function getCustomerInformation($data) {
+	    $fields = trim(Mage::getStoreConfig('segment_analytics/options/customer_traits'));
+        $to_send = preg_split('%[\n\r]%', $fields, -1, PREG_SPLIT_NO_EMPTY);        
+        
+        $data_final = array();
+        foreach($to_send as $field) {
+            $data_final[$field] = array_key_exists($field, $data) ? $data[$field] : null;
+        }
+        return $data_final;
     }
     
     public function isAdmin()
@@ -46,43 +56,6 @@ class Segment_Analytics_Helper_Data extends Mage_Core_Helper_Abstract
         return $title;
     }
     
-    public function getNormalizedCustomerInformation($data)
-    {
-        $swap = array(
-            'firstname'=>'first_name',
-            'lastname'=>'last_name');
-            
-        //nomalize items from $swap            
-        foreach($swap as $old=>$new)
-        {
-            if(!array_key_exists($old, $data))
-            {
-                continue;
-            }            
-            $data[$new] = $data[$old];
-            unset($data[$old]);
-        }
-        
-        //normalize dates
-        $data = $this->_normalizeDatesToISO8601($data);
-        
-        //only 
-        $fields = trim(Mage::getStoreConfig('segment_analytics/options/customer_traits'));
-        $to_send = preg_split('%[\n\r]%', $fields, -1, PREG_SPLIT_NO_EMPTY);        
-        
-        $data_final = array();
-        foreach($to_send as $field)
-        {
-            $data_final[$field] = array_key_exists($field, $data) ? $data[$field] : null;
-        }
-                
-        $data_final = $this->getDataCastAsBooleans($data_final);
-        
-        var_dump($data_final);
-        exit;
-        return $data_final;
-        
-    }
     
     public function getNormalizedProductInformation($product)
     {
