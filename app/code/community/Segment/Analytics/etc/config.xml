@@ -16,7 +16,31 @@
 				<class>Segment_Analytics_Helper</class>
 			</analytics>
 		</helpers>
-
+		<models>
+			<segment_analytics>
+				<class>Segment_Analytics_Model</class>
+			</segment_analytics>
+		</models>
+		<events>
+          <customer_login>
+            <observers>
+              <segment_login>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>loggedIn</method>
+              </segment_login>
+            </observers>
+          </customer_login>
+          <controller_action_layout_load_before>
+            <observers>
+              <segment_additional>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>addScripts</method>
+              </segment_additional>
+            </observers>
+          </controller_action_layout_load_before>    
+        </events>
 	</global>
 	<frontend>
 		<layout>
@@ -33,9 +57,6 @@
 	            <customer_traits>
 created_at
 email
-first_name
-last_name
-middle_name
 name
 is_active
 updated_at
@@ -46,4 +67,3 @@ total_spent
 	    </segment_analytics>
 	</default>
 </config>
-
