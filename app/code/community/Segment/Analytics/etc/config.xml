@@ -22,6 +22,15 @@
 			</segment_analytics>
 		</models>
 		<events>
+          <controller_action_layout_load_before>
+            <observers>
+              <segment_additional>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>addScripts</method>
+              </segment_additional>
+            </observers>
+          </controller_action_layout_load_before>
           <customer_login>
             <observers>
               <segment_login>
@@ -31,15 +40,51 @@
               </segment_login>
             </observers>
           </customer_login>
-          <controller_action_layout_load_before>
+          <customer_logout>
             <observers>
-              <segment_additional>
+              <segment_logout>
                 <type>model</type>
                 <class>segment_analytics/observer</class>
-                <method>addScripts</method>
-              </segment_additional>
+                <method>loggedOut</method>
+              </segment_logout>
             </observers>
-          </controller_action_layout_load_before>    
+          </customer_logout>
+          <checkout_cart_add_product_complete>
+            <observers>
+              <segment_addtocart>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>addToCart</method>
+              </segment_addtocart>
+            </observers>
+          </checkout_cart_add_product_complete>
+          <sales_quote_remove_item>
+            <observers>
+              <segment_removefromcart>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>removeFromCart</method>
+              </segment_removefromcart>
+            </observers>
+          </sales_quote_remove_item>
+          <catalogsearch_query_load_after>
+            <observers>
+              <segment_search>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>loadedSearch</method>
+              </segment_search>
+            </observers>
+          </catalogsearch_query_load_after>
+          <customer_register_success>
+            <observers>
+              <segment_register_success>
+                <type>singleton</type>
+                <class>segment_analytics/observer</class>
+                <method>customerRegistered</method>
+              </segment_register_success>
+            </observers>
+          </customer_register_success>
         </events>
 	</global>
 	<frontend>
