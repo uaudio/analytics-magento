@@ -35,7 +35,7 @@ class Segment_Analytics_Model_Observer {
 
     public function loadedSearch($observer) {
         $o = $observer->getDataObject();
-        if(!$o->getQueryText()){return;}
+        if(!$o->getQueryText()) { return; }
         $this->addAction('loadedsearch',
             array('query'=>$o->getQueryText())
         );
@@ -75,7 +75,6 @@ class Segment_Analytics_Model_Observer {
     public function getDeferredActions() {
         $actions = $this->_getSession()->getDeferredActions();
         $actions = $actions ? $actions : array();
-        Mage::log($actions);
         return $actions;
     }
 
