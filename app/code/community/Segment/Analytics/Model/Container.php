@@ -5,7 +5,13 @@
  * @package    Segment_Analytics
  */
 class Segment_Analytics_Model_Container  extends Enterprise_PageCache_Model_Container_Abstract {
+
 	public function applyWithoutApp(&$content) {
 	    return false;
     }
+    
+    public function _getCacheId() {
+        return false;
+    }
+
 }
