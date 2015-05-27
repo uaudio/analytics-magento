@@ -8,6 +8,7 @@ class Segment_Analytics_Block_Additional extends Mage_Core_Block_Template {
     }
 
 	public function _toHtml() {
+        if (!Mage::helper('analytics')->isEnabled()) return false;
 	    $script = '';
 	    foreach ($this->actions as $action) {
 	        $script .= Mage::app()->getLayout()->createBlock('analytics/' . $action->action)->toHtml();
