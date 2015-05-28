@@ -76,6 +76,12 @@ class Segment_Analytics_Model_Observer {
         );
     }
     
+    public function orderPlaced($observer) {
+        $this->addDeferredAction('orderplaced',
+            array('increment_id'=>$observer->getOrder()->getIncrementId())
+        );
+    }
+
     public function _getSession() {
         return Mage::getSingleton('segment_analytics/session');
     }

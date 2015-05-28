@@ -121,6 +121,15 @@
               </segment_analyticsmore_wishlist_add>
             </observers>                   
           </wishlist_add_product>
+          <sales_order_place_after>
+            <observers>
+              <segment_analyticsmore_sales_order_place_after>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>orderPlaced</method>
+              </segment_analyticsmore_sales_order_place_after>
+            </observers>                      
+          </sales_order_place_after>
      </events>
 	</global>
 	<frontend>
