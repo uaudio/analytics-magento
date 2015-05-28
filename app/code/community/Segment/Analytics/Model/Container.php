@@ -14,4 +14,10 @@ class Segment_Analytics_Model_Container  extends Enterprise_PageCache_Model_Cont
         return false;
     }
 
+    protected function _renderBlock() {
+        $block = $this->_getPlaceHolderBlock();
+        Mage::dispatchEvent('render_block', array('block' => $block, 'placeholder' => $this->_placeholder));
+        return $block->toHtml();
+    }
+
 }
