@@ -48,6 +48,18 @@ class Segment_Analytics_Model_Observer {
         );
     }
 
+    public function reviewView($observer) {
+        $this->addAction('viewedreview',
+            array('sku'=>$observer->getProduct()->getSku())
+        );
+    }
+
+    public function productView($observer) {
+        $this->addAction('viewedproduct',
+            array('sku'=>$observer->getProduct()->getSku())
+        );
+    }
+    
     public function _getSession() {
         return Mage::getSingleton('segment_analytics/session');
     }
@@ -82,15 +94,15 @@ class Segment_Analytics_Model_Observer {
         $o_action = new stdClass;
         $o_action->action = $action;
         $o_action->data = $action_data;
-        $actions = Mage::registry('actions');
+        $actions = $this->getActions();
         $actions[] = $o_action;
-        Mage::unregister('actions');
-        Mage::register('actions',$actions);
+        Mage::unregister('segment_actions');
+        Mage::register('segment_actions',$actions);
         return $this;
     }
     
     public function getActions() {
-        $actions = Mage::registry('actions');
+        $actions = Mage::registry('segment_actions');
         $actions = $actions ? $actions : array();
         return $actions;
     }

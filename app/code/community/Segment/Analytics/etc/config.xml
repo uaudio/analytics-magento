@@ -79,13 +79,31 @@
           <customer_register_success>
             <observers>
               <segment_register_success>
-                <type>singleton</type>
+                <type>model</type>
                 <class>segment_analytics/observer</class>
                 <method>customerRegistered</method>
               </segment_register_success>
             </observers>
           </customer_register_success>
-        </events>
+          <review_controller_product_init_after>
+            <observers>
+              <segment_review_view>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>reviewView</method>
+              </segment_review_view>
+            </observers>
+          </review_controller_product_init_after>
+          <catalog_product_load_after>
+            <observers>
+              <segment_product_view>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>productView</method>
+              </segment_product_view>
+            </observers>
+          </catalog_product_load_after>
+      </events>
 	</global>
 	<frontend>
 		<layout>
