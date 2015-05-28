@@ -7,6 +7,8 @@ class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
         $info = Mage::getModel('sales/order_api')->info($data['increment_id']);
 
         $params = array();
+        $params['order_id']            = $info['id'];
+        $params['increment_id']            = $data['increment_id'];
         $params['total']            = (float) $info['grand_total'];
         $params['revenue']            = (float) $info['grand_total'];
         $params['coupon']       =   $info['coupon_code'];
