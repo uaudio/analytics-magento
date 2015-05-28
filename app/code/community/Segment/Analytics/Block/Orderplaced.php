@@ -7,7 +7,7 @@ class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
         $info = Mage::getModel('sales/order_api')->info($data['increment_id']);
 
         $params = array();
-        $params['order_id']            = $info['id'];
+        $params['order_id']            = $info['order_id'];
         $params['increment_id']            = $data['increment_id'];
         $params['total']            = (float) $info['grand_total'];
         $params['revenue']            = (float) $info['grand_total'];
@@ -27,10 +27,7 @@ class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
         }
         $json = Mage::helper("core")->jsonEncode($params);
         $json = preg_replace('%[\r\n]%','',$json);
-        
 
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Completed Order\',
-		'.$json.'
-		);});</script>';
+		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Completed Order\','.$json.');});</script>';
 	}
 }
