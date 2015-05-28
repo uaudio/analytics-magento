@@ -60,6 +60,14 @@ class Segment_Analytics_Model_Observer {
         );
     }
     
+    public function newsletterSubscriber($observer) {
+        $subscriber = $observer->getDataObject();
+        if(!$subscriber->getSubscriberStatus()) return;
+        $this->addDeferredAction('subscribenewsletter',
+            array('subscriber'=>$subscriber->getData())
+        );          
+    }
+    
     public function _getSession() {
         return Mage::getSingleton('segment_analytics/session');
     }
