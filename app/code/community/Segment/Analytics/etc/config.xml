@@ -112,6 +112,15 @@
               </segment_newsletter>
             </observers>                           
           </newsletter_subscriber_save_after>
+          <wishlist_add_product>
+            <observers>
+              <segment_analyticsmore_wishlist_add>
+                <type>model</type>
+                <class>segment_analytics/observer</class>
+                <method>wishlistAddProduct</method>
+              </segment_analyticsmore_wishlist_add>
+            </observers>                   
+          </wishlist_add_product>
      </events>
 	</global>
 	<frontend>

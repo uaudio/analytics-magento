@@ -65,7 +65,15 @@ class Segment_Analytics_Model_Observer {
         if(!$subscriber->getSubscriberStatus()) return;
         $this->addDeferredAction('subscribenewsletter',
             array('subscriber'=>$subscriber->getData())
-        );          
+        );
+    }
+
+    public function wishlistAddProduct($observer)
+    {
+        $product  = $observer->getProduct();
+        $this->addDeferredAction('addedtowishlist',
+            array('sku'=>$product->getSku())
+        );
     }
     
     public function _getSession() {
