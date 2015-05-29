@@ -7,9 +7,8 @@
 
 ## Installing
 
-    $ rsync -a /path/to/this/repo/app/ /path/to/my/magento/app/
-
-works for me so far.
+In Magento Admin, go to System -> Magento Connect -> Magento Connect Manager.
+Then, under "Direct package file upload" upload the file Segment_Analytics-1.0.1.tgz
 
 ## License
 
