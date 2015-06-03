@@ -2,10 +2,10 @@
 <layout>
     <default>
         <reference name="before_body_end">
-            <block type="analytics/init" name="analytics_init" as="init" />
-            <block type="analytics/page" name="analytics_page" as="page" />
-            <block type="analytics/identify" name="analytics_identify" as="identify" />
-            <block type="analytics/additional" name="analytics_additional" as="additional" />
+            <block type="segment_analytics/init" name="analytics_init" as="init" />
+            <block type="segment_analytics/page" name="analytics_page" as="page" />
+            <block type="segment_analytics/identify" name="analytics_identify" as="identify" />
+            <block type="segment_analytics/additional" name="analytics_additional" as="additional" />
         </reference>
     </default>
 </layout>

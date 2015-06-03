@@ -7,9 +7,9 @@
 	</modules>
 	<global>
 		<blocks>
-			<analytics>
+			<segment_analytics>
 				<class>Segment_Analytics_Block</class>
-			</analytics>
+			</segment_analytics>
 		</blocks>
 		<helpers>
 			<analytics>
