@@ -86,10 +86,11 @@ class Segment_Analytics_Model_Observer {
         return Mage::getSingleton('segment_analytics/session');
     }
 
-    public function addDeferredAction($action, $action_data=array()) {
+    public function addDeferredAction($action, $action_data=array(), $module = 'segment_analytics') {
         $o_action = new stdClass;
         $o_action->action = $action;
         $o_action->data = $action_data;
+        $o_action->module = $module;
         $session = $this->_getSession();
         $deferred = $session->getDeferredActions();
         $deferred = $deferred ? $deferred : array();
@@ -112,10 +113,11 @@ class Segment_Analytics_Model_Observer {
         return $actions;
     }
 
-    public function addAction($action, $action_data=array()) {
+    public function addAction($action, $action_data=array(), $module = 'segment_analytics') {
         $o_action = new stdClass;
         $o_action->action = $action;
         $o_action->data = $action_data;
+        $o_action->module = $module;
         $actions = $this->getActions();
         $actions[] = $o_action;
         Mage::unregister('segment_actions');

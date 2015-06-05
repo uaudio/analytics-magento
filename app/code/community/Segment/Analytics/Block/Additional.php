@@ -11,10 +11,8 @@ class Segment_Analytics_Block_Additional extends Mage_Core_Block_Template {
         if (!Mage::helper('analytics')->isEnabled()) return false;
 	    $script = '';
 	    foreach ($this->actions as $action) {
-	        if (file_exists(__DIR__.'/'.ucfirst($action->action).'.php')) {
-	            Mage::register('segment_data',$action->data);
-	            $script .= Mage::app()->getLayout()->createBlock('segment_analytics/' . $action->action)->toHtml();
-	        }
+	        Mage::register('segment_data',$action->data);
+	        $script .= Mage::app()->getLayout()->createBlock($action->module . '/' . $action->action)->toHtml();
 	    }
 	    return $script;
 	}
