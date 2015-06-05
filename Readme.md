@@ -7,9 +7,11 @@
 
 ## Installing
 
+Download latest release from https://github.com/uaudio/analytics-magento/releases/tag/1.0.2
+
 In Magento Admin, go to System -> Magento Connect -> Magento Connect Manager.
 
-Then, under "Direct package file upload" upload the file Segment_Analytics-1.0.1.tgz
+Then, under "Direct package file upload" upload the file Segment_Analytics-1.0.2.tgz
 
 ## License
 
