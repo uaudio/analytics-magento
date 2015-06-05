@@ -2,6 +2,7 @@
 class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
 	public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
+        $contextJson = Mage::helper('analytics')->getContextJson();
         $data = Mage::registry('segment_data');
         Mage::unregister('segment_data');
         $info = Mage::getModel('sales/order_api')->info($data['increment_id']);
@@ -28,6 +29,6 @@ class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
         $json = Mage::helper("core")->jsonEncode($params);
         $json = preg_replace('%[\r\n]%','',$json);
 
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Completed Order\','.$json.');});</script>';
+		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Completed Order\','.$json.','.$contextJson.');});</script>';
 	}
 }
