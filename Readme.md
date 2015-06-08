@@ -34,7 +34,7 @@ To add a new event, first override the Segment_Analytics extenstion in your loca
 
 Then add the following: 
 
-1. Event observer
+**Event observer**
 ```
 	<global>
 		<events>
@@ -51,7 +51,7 @@ Then add the following:
   </global>
 ```
 
-2. Observer Method 
+**Observer Method** 
 (call addAction or addDeferredAction depending on whether Magento will redirect after the event is fired)
 ```
     public function MYMETHOD($observer) {
@@ -61,7 +61,7 @@ Then add the following:
     }
 ```
 
-3. Block for newevent: 
+**Block for newevent**
 ```
 <?php
 class MYMODULE_Block_Newevent extends Mage_Core_Block_Template {
