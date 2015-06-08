@@ -18,15 +18,15 @@ Then, under "Direct package file upload" upload the file you downloaded
 The following events are sent by this extension: 
 * Logged In
 * Logged Out
-* Add Product to Cart
-* Remove Item from Cart
-* Loaded Search
-* Customer Registered
-* Viewed Product Review
+* Added Product
+* Removed Product
+* Searched Products
+* Signed Up
+* Viewed Product Reviews
 * Viewed Product
 * Subscribed to Newsletter
-* Add Product to Wishlist
-* Order Placed
+* Wishlisted Product
+* Completed Order
 
 ## Add a Custom Event
 
