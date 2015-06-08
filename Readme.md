@@ -13,6 +13,71 @@ In Magento Admin, go to System -> Magento Connect -> Magento Connect Manager.
 
 Then, under "Direct package file upload" upload the file you downloaded
 
+## Built-in Events
+
+The following events are sent by this extension: 
+* Logged In
+* Logged Out
+* Add Product to Cart
+* Remove Item from Cart
+* Loaded Search
+* Customer Registered
+* Viewed Product Review
+* Viewed Product
+* Subscribed to Newsletter
+* Add Product to Wishlist
+* Order Placed
+
+## Add a Custom Event
+
+To add a new event, first override the Segment_Analytics extenstion in your local code pool.
+
+Then add the following: 
+
+1. Event observer
+```
+	<global>
+		<events>
+      <MY_EVENT>
+        <observers>
+          <MY_EVENT_NAME>
+            <type>model</type>
+            <class>MYMODULE/observer</class>
+            <method>MYMETHOD</method>
+          </MY_EVENT_NAME>
+        </observers>
+      </MY_EVENT>
+    </events>
+  </global>
+```
+
+2. Observer Method 
+(call addAction or addDeferredAction depending on whether Magento will redirect after the event is fired)
+```
+    public function MYMETHOD($observer) {
+        $this->addDeferredAction('newevent',
+            array()
+        ,'MYMODULE');
+    }
+```
+
+3. Block for newevent: 
+```
+<?php
+class MYMODULE_Block_Newevent extends Mage_Core_Block_Template {
+	public function _toHtml() {
+        if (!Mage::helper('analytics')->isEnabled()) return false;
+        $contextJson = Mage::helper('analytics')->getContextJson();
+        $data = Mage::registry('segment_data');
+        Mage::unregister('segment_data');
+        $json = Mage::helper("core")->jsonEncode($data);
+        $json = preg_replace('%[\r\n]%','',$json);
+		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'New Event\','.$json.','.$contextJson.');});</script>';
+	}
+}
+```
+
+
 ## License
 
 Copyright &copy; 2014 Segment &lt;friends@segment.com&gt;
