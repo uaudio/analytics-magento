@@ -2,13 +2,13 @@
 <config>
 	<placeholders>
 		<analytics_identify>
-			<block>analytics/identify</block>
+			<block>segment_analytics/identify</block>
 			<placeholder>analytics_identify_container</placeholder>
 			<container>Segment_Analytics_Model_Container</container>
 			<cache_lifetime>1</cache_lifetime>
 		</analytics_identify>
 		<analytics_additional>
-			<block>analytics/additional</block>
+			<block>segment_analytics/additional</block>
 			<placeholder>analytics_additional_container</placeholder>
 			<container>Segment_Analytics_Model_Container</container>
 			<cache_lifetime>1</cache_lifetime>
