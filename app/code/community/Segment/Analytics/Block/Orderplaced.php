@@ -13,6 +13,7 @@ class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
         $params['total']            = (float) $info['grand_total'];
         $params['revenue']            = (float) $info['grand_total'];
         $params['coupon']       =   $info['coupon_code'];
+ 	$params['currency']	=   $info['order_currency_code'];
         $params['status']           = $info['status'];        
         $params['shipping']         = (float) $info['shipping_amount'];
         $params['tax']              = (float) $info['tax_amount'];
