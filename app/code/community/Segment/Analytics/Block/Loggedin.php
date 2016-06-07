@@ -1,9 +1,9 @@
 <?php
-class Segment_Analytics_Block_Loggedin extends Mage_Core_Block_Template {
+
+class Segment_Analytics_Block_Loggedin extends Segment_Analytics_Block_Abstract {
+
 	public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
-        Mage::unregister('segment_data');
-        $contextJson = Mage::helper('analytics')->getContextJson();
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Logged In\',{},'.$contextJson.');});</script>';
+        return $this->track('Logged In', new stdClass);
 	}
 }

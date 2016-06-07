@@ -1,11 +1,11 @@
 <?php
-class Segment_Analytics_Block_Registered extends Mage_Core_Block_Template {
-	public function _toHtml() {
+
+class Segment_Analytics_Block_Registered extends Segment_Analytics_Block_Abstract {
+
+    public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
-        $contextJson = Mage::helper('analytics')->getContextJson();
-        $data = Mage::registry('segment_data');
-        Mage::unregister('segment_data');
+        $data = $this->getActionData();
         if (!isset($data['customer_id'])) return false;
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Signed Up\',{\'userId\':\''.$data['customer_id'].'\'},'.$contextJson.');});</script>';
-	}
+        return $this->track('Signed Up', ['userId' => $data['customer_id']]);
+    }
 }

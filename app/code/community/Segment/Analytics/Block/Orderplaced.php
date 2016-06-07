@@ -1,35 +1,34 @@
 <?php
-class Segment_Analytics_Block_Orderplaced extends Mage_Core_Block_Template {
-	public function _toHtml() {
+
+class Segment_Analytics_Block_Orderplaced extends Segment_Analytics_Block_Abstract {
+    public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
-        $contextJson = Mage::helper('analytics')->getContextJson();
-        $data = Mage::registry('segment_data');
-        Mage::unregister('segment_data');
+        $data = $this->getActionData();
         $info = Mage::getModel('sales/order_api')->info($data['increment_id']);
 
-        $params = array();
-        $params['order_id']            = $info['order_id'];
-        $params['increment_id']            = $data['increment_id'];
-        $params['total']            = (float) $info['grand_total'];
-        $params['revenue']            = (float) $info['grand_total'];
-        $params['coupon']       =   $info['coupon_code'];
- 	$params['currency']	=   $info['order_currency_code'];
-        $params['status']           = $info['status'];        
-        $params['shipping']         = (float) $info['shipping_amount'];
-        $params['tax']              = (float) $info['tax_amount'];
-        $params['products']         = array();
-        foreach($info['items'] as $item) {
-            $tmp = array();      
-            $tmp['sku']           = $item['sku'];
-            $tmp['name']          = $item['name'];
-            $tmp['price']         = (float) ($item['price'] - $item['discount_amount']);
-            $tmp['quantity']      = (float) $item['qty_ordered'];
-            $tmp['id']    = (int) $item['product_id'];            
-            $params['products'][] = $tmp;
-        }
-        $json = Mage::helper("core")->jsonEncode($params);
-        $json = preg_replace('%[\r\n]%','',$json);
+        $params = [
+            'order_id' => $info['order_id'],
+            'increment_id' => $data['increment_id'],
+            'total' => (float) $info['grand_total'],
+            'revenue' => (float) $info['grand_total'],
+            'coupon' => $info['coupon_code'],
+            'currency' => $info['order_currency_code'],
+            'status' => $info['status'],
+            'shipping' => (float) $info['shipping_amount'],
+            'tax' => (float) $info['tax_amount'],
+            'products' => [],
+        ];
 
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Completed Order\','.$json.','.$contextJson.');});</script>';
-	}
+        foreach($info['items'] as $item) {
+            $params['products'][] = [
+                'sku' => $item['sku'],
+                'name' => $item['name'],
+                'price' => (float) ($item['price'] - $item['discount_amount']),
+                'quantity' => (float) $item['qty_ordered'],
+                'id' => (int) $item['product_id'],
+            ];
+        }
+
+        return $this->track('Completed Order', $params);
+    }
 }

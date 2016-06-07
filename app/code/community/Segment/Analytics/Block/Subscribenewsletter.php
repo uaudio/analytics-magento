@@ -1,10 +1,10 @@
 <?php
-class Segment_Analytics_Block_Subscribenewsletter extends Mage_Core_Block_Template {
-	public function _toHtml() {
+
+class Segment_Analytics_Block_Subscribenewsletter extends Segment_Analytics_Block_Abstract {
+
+    public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
-        $contextJson = Mage::helper('analytics')->getContextJson();
-        $data = Mage::registry('segment_data');
-        Mage::unregister('segment_data');
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Subscribed to Newsletter\',{},'.$contextJson.');});</script>';
-	}
+        $data = $this->getActionData();
+        return $this->track('Subscribed to Newsletter', new stdClass);
+    }
 }

@@ -1,10 +1,10 @@
 <?php
-class Segment_Analytics_Block_Viewedproduct extends Mage_Core_Block_Template {
+
+class Segment_Analytics_Block_Viewedproduct extends Segment_Analytics_Block_Abstract {
+
 	public function _toHtml() {
         if (!Mage::helper('analytics')->isEnabled()) return false;
-        $contextJson = Mage::helper('analytics')->getContextJson();
-        $data = Mage::registry('segment_data');
-        Mage::unregister('segment_data');
-		return '<script>document.observe("dom:loaded", function() { window.analytics.track(\'Viewed Product\',{\'category\':\'Product\',\'sku\':\''.$data['sku'].'\'},'.$contextJson.');});</script>';
+        $data = $this->getActionData();
+        return $this->track('Viewed Product', ['category' => 'Product', 'sku' => $data['sku']]);
 	}
 }
