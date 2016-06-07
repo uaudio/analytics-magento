@@ -1,6 +1,9 @@
 <?php
+
 class Segment_Analytics_Model_Observer {
-    
+
+    protected $_actions = [];
+
     public function loggedIn($observer) {
         $this->addDeferredAction('loggedin');
     }
@@ -58,8 +61,7 @@ class Segment_Analytics_Model_Observer {
         );
     }
 
-    public function wishlistAddProduct($observer)
-    {
+    public function wishlistAddProduct($observer) {
         $product  = $observer->getProduct();
         $this->addDeferredAction('addedtowishlist',
             array('sku'=>$product->getSku())
@@ -108,17 +110,11 @@ class Segment_Analytics_Model_Observer {
         $o_action->action = $action;
         $o_action->data = $action_data;
         $o_action->module = $module;
-        $actions = $this->getActions();
-        $actions[] = $o_action;
-        Mage::unregister('segment_actions');
-        Mage::register('segment_actions',$actions);
+        $this->_actions[] = $o_action;
         return $this;
     }
     
     public function getActions() {
-        $actions = Mage::registry('segment_actions');
-        $actions = $actions ? $actions : array();
-        return $actions;
+        return $this->_actions;
     }
-
 }

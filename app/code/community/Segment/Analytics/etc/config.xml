@@ -25,7 +25,7 @@
             <customer_login>
                 <observers>
                     <segment_login>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>loggedIn</method>
                     </segment_login>
@@ -34,7 +34,7 @@
             <customer_logout>
                 <observers>
                     <segment_logout>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>loggedOut</method>
                     </segment_logout>
@@ -43,7 +43,7 @@
             <checkout_cart_add_product_complete>
                 <observers>
                     <segment_addtocart>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>addToCart</method>
                     </segment_addtocart>
@@ -52,7 +52,7 @@
             <sales_quote_remove_item>
                 <observers>
                     <segment_removefromcart>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>removeFromCart</method>
                     </segment_removefromcart>
@@ -61,7 +61,7 @@
             <catalogsearch_query_load_after>
                 <observers>
                     <segment_search>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>loadedSearch</method>
                     </segment_search>
@@ -70,7 +70,7 @@
             <customer_register_success>
                 <observers>
                     <segment_register_success>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>customerRegistered</method>
                     </segment_register_success>
@@ -79,7 +79,7 @@
             <review_controller_product_init_after>
                 <observers>
                     <segment_review_view>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>reviewView</method>
                     </segment_review_view>
@@ -88,7 +88,7 @@
             <catalog_product_load_after>
                 <observers>
                     <segment_product_view>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>productView</method>
                     </segment_product_view>
@@ -97,7 +97,7 @@
             <newsletter_subscriber_save_after>
                 <observers>
                     <segment_newsletter>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>newsletterSubscriber</method>
                     </segment_newsletter>
@@ -106,7 +106,7 @@
             <wishlist_add_product>
                 <observers>
                     <segment_analyticsmore_wishlist_add>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>wishlistAddProduct</method>
                     </segment_analyticsmore_wishlist_add>
@@ -115,7 +115,7 @@
             <sales_order_place_after>
                 <observers>
                     <segment_analyticsmore_sales_order_place_after>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>segment_analytics/observer</class>
                         <method>orderPlaced</method>
                     </segment_analyticsmore_sales_order_place_after>
