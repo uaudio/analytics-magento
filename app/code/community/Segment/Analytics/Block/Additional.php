@@ -5,8 +5,9 @@ class Segment_Analytics_Block_Additional extends Mage_Core_Block_Template {
     public $actions = array();
     
     public function __construct() {
-        $this->actions = array_merge(Mage::getModel('segment_analytics/observer')->getActions(), Mage::getModel('segment_analytics/observer')->getDeferredActions());
-        Mage::getModel('segment_analytics/observer')->clearDeferredActions();
+        $observer = Mage::getSingleton('segment_analytics/observer');
+        $this->actions = array_merge($observer->getActions(), $observer->getDeferredActions());
+        $observer->clearDeferredActions();
     }
 
     public function _toHtml() {

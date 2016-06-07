@@ -22,15 +22,6 @@
 			</segment_analytics>
 		</models>
 		<events>
-          <controller_action_layout_load_before>
-            <observers>
-              <segment_additional>
-                <type>model</type>
-                <class>segment_analytics/observer</class>
-                <method>addScripts</method>
-              </segment_additional>
-            </observers>
-          </controller_action_layout_load_before>
           <customer_login>
             <observers>
               <segment_login>

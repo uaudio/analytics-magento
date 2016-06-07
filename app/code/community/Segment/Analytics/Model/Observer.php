@@ -1,15 +1,5 @@
 <?php
 class Segment_Analytics_Model_Observer {
-    public function addScripts($observer) {
-        if (count($this->getDeferredActions()) == 0) return $this;
-        $layout = $observer->getEvent()->getLayout();
-        if(!$layout) return;
-        $content = $layout->getBlock('content');
-        if(!$content) return;
-        $block = $layout->createBlock('segment_analytics/additional');
-        $content->append($block);
-        return $this;
-    }
     
     public function loggedIn($observer) {
         $this->addDeferredAction('loggedin');
