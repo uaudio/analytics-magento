@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Segment_Analytics>
-			<version>1.0.7</version>
+			<version>1.0.8</version>
 		</Segment_Analytics>
 	</modules>
 	<global>
@@ -110,7 +110,7 @@
                 <class>segment_analytics/observer</class>
                 <method>newsletterSubscriber</method>
               </segment_newsletter>
-            </observers>                           
+            </observers>
           </newsletter_subscriber_save_after>
           <wishlist_add_product>
             <observers>
@@ -119,7 +119,7 @@
                 <class>segment_analytics/observer</class>
                 <method>wishlistAddProduct</method>
               </segment_analyticsmore_wishlist_add>
-            </observers>                   
+            </observers>
           </wishlist_add_product>
           <sales_order_place_after>
             <observers>
@@ -128,7 +128,7 @@
                 <class>segment_analytics/observer</class>
                 <method>orderPlaced</method>
               </segment_analyticsmore_sales_order_place_after>
-            </observers>                      
+            </observers>
           </sales_order_place_after>
      </events>
 	</global>
