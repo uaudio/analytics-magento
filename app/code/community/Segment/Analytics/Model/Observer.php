@@ -1,8 +1,13 @@
 <?php
-
+/**
+ * Segment Analytics Observer
+ *
+ * @package    Segment_Analytics
+ */
 class Segment_Analytics_Model_Observer {
 
     protected $_actions = [];
+    protected $_pageActions = [];
 
     public function loggedIn($observer) {
         $this->addDeferredAction('loggedin');
@@ -48,7 +53,7 @@ class Segment_Analytics_Model_Observer {
     }
 
     public function productView($observer) {
-        $this->addAction('viewedproduct',
+        $this->addPageAction('viewedproduct',
             array('sku'=>$observer->getProduct()->getSku())
         );
     }
@@ -113,8 +118,21 @@ class Segment_Analytics_Model_Observer {
         $this->_actions[] = $o_action;
         return $this;
     }
-    
+
+    public function addPageAction($action, $action_data=array(), $module = 'segment_analytics') {
+        $o_action = new stdClass;
+        $o_action->action = $action;
+        $o_action->data = $action_data;
+        $o_action->module = $module;
+        $this->_pageActions[] = $o_action;
+        return $this;
+    }
+
     public function getActions() {
         return $this->_actions;
+    }
+
+    public function getPageActions() {
+        return $this->_pageActions;
     }
 }
