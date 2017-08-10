@@ -92,7 +92,7 @@ class Segment_Analytics_Model_Observer {
         $deferred = $session->getDeferredActions();
         $deferred = $deferred ? $deferred : array();
         foreach ($deferred as $i => $_action) {
-            if ($_action->action == $action) unset($deferred[$i]);
+            if ($_action->action == $action && $_action->data == $action_data) unset($deferred[$i]);
         }
         $deferred[] = $o_action;
         $session->setDeferredActions($deferred);
