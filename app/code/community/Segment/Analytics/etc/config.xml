@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Segment_Analytics>
-            <version>1.0.14</version>
+            <version>1.0.15</version>
         </Segment_Analytics>
     </modules>
     <global>
