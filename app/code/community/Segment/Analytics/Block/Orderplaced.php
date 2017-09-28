@@ -20,7 +20,7 @@ class Segment_Analytics_Block_Orderplaced extends Segment_Analytics_Block_Abstra
         ];
 
         foreach($info['items'] as $item) {
-            $category = Mage::getModel('catalog/product')->loadBySku($item['sku'])->getCategory();
+            $category = Mage::getModel('catalog/product')->loadBySku($item['sku'])->getDefaultCategory();
             $params['products'][] = [
                 'sku' => $item['sku'],
                 'name' => $item['name'],
