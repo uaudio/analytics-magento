@@ -20,12 +20,14 @@ class Segment_Analytics_Block_Orderplaced extends Segment_Analytics_Block_Abstra
         ];
 
         foreach($info['items'] as $item) {
+            $category = Mage::getModel('catalog/product')->loadBySku($item['sku'])->getCategory();
             $params['products'][] = [
                 'sku' => $item['sku'],
                 'name' => $item['name'],
                 'price' => (float) ($item['price'] - $item['discount_amount']),
                 'quantity' => (float) $item['qty_ordered'],
                 'id' => (int) $item['product_id'],
+                'category' => is_object($category) ? $category->getName() : '',
             ];
         }
 
