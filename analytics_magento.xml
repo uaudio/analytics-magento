@@ -9,7 +9,7 @@
    <description>Integrate analytics into any Magento store.</description>
    <license>OSL</license>
    <license_uri/>
-   <version>1.0.16</version>
+   <version>1.0.17</version>
    <stability>beta</stability>
    <notes>This is a fork of https://github.com/segmentio/analytics-magento written to be overridden and to work with Full Page Caching in Magento Enterprise Edition</notes>
    <authors>
