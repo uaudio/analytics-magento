@@ -3,7 +3,14 @@
 class Segment_Analytics_Block_Abstract extends Mage_Core_Block_Template {
 
     public function track($event, $data) {
-        return sprintf('<script>document.observe("dom:loaded", function() { window.analytics.track(%s, %s, %s); });</script>', $this->jsonEncode($event), $this->jsonEncode($data), $this->getContextJson());
+        $eventData = new Varien_Object([
+            'track_data' => [
+                'event' => $event,
+                'properties' => $data,
+            ]
+        ]);
+        Mage::dispatchEvent('before_segment_track_event', ['event_data' => $eventData]);
+        return sprintf('<script>document.observe("dom:loaded", function() { window.analytics.track(%s, %s, %s); });</script>', $this->jsonEncode($event), $this->jsonEncode($eventData->getTrackData('properties')), $this->getContextJson());
     }
 
     public function identify($id, $data) {
