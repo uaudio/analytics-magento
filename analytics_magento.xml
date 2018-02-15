@@ -1,5 +1,5 @@
 <_>
-   <form_key>waYleA65srizIwhz</form_key>
+   <form_key>kItAc3QmQa8V4GqY</form_key>
    <name>Segment_Analytics</name>
    <channel>community</channel>
    <version_ids>
@@ -9,7 +9,7 @@
    <description>Integrate analytics into any Magento store.</description>
    <license>OSL</license>
    <license_uri/>
-   <version>1.0.17</version>
+   <version>1.0.19</version>
    <stability>beta</stability>
    <notes>This is a fork of https://github.com/segmentio/analytics-magento written to be overridden and to work with Full Page Caching in Magento Enterprise Edition</notes>
    <authors>
@@ -24,7 +24,7 @@
       </email>
    </authors>
    <depends_php_min>5.0.0</depends_php_min>
-   <depends_php_max>6.0.0</depends_php_max>
+   <depends_php_max>7.2.0</depends_php_max>
    <depends>
       <package>
          <name>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                            </files>
+            <files>                             </files>
          </files>
       </package>
       <extension>
@@ -92,4 +92,8 @@
          <ignore/>
       </ignore>
    </contents>
+   <page>1</page>
+   <limit>200</limit>
+   <folder/>
+   <package/>
 </_>
